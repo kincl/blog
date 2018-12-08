@@ -1,8 +1,9 @@
 baseURL = "http://jasonkincl.com/"
 languageCode = "en-us"
+copyright = "Copyright &copy; 2018 - Jason Kincl"
 title = "A Blog"
-theme = "kiera"
 
+theme = "kiera"
 # kiera theme options
 pygmentsCodeFences = true
 
@@ -19,5 +20,5 @@ googleAnalytics = "" #Google Analytics ID
     instagram = ""  #Instagram username
 
 [params]
-    tagline = "a systems engineer blog"
+    tagline = "a systems engineering blog"
 # kiera theme options
