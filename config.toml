@@ -1,0 +1,23 @@
+baseURL = "http://jasonkincl.com/"
+languageCode = "en-us"
+title = "A Blog"
+theme = "kiera"
+
+# kiera theme options
+pygmentsCodeFences = true
+
+disqusShortname = "" #Disqus shortname
+googleAnalytics = "" #Google Analytics ID
+
+[author]
+    name = "Jason Kincl"       #Author name
+    github = "kincl"     #Github username
+    gitlab = ""     #Gitlab username
+    linkedin = "jasonkincl"   #LinkedIn username
+    facebook = ""   #Facebook username
+    twitter = ""    #Twitter username
+    instagram = ""  #Instagram username
+
+[params]
+    tagline = "a systems engineer blog"
+# kiera theme options
