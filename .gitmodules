@@ -1,7 +1,3 @@
 [submodule "themes/kiera"]
 	path = themes/kiera
 	url = https://github.com/avianto/hugo-kiera.git
-[submodule "public"]
-	path = public
-	url = https://github.com/kincl/kincl.github.io.git
-	branch = master
