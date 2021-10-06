@@ -11,14 +11,13 @@ disqusShortname = "" #Disqus shortname
 googleAnalytics = "" #Google Analytics ID
 
 [author]
-    name = "Jason Kincl"       #Author name
-    github = "kincl"     #Github username
-    gitlab = ""     #Gitlab username
-    linkedin = "jasonkincl"   #LinkedIn username
-    facebook = ""   #Facebook username
-    twitter = ""    #Twitter username
-    instagram = ""  #Instagram username
+    name = "Jason Kincl"
+    github = "kincl"
+    gitlab = ""
+    linkedin = "jasonkincl"
+    facebook = ""
+    twitter = ""
+    instagram = ""
 
 [params]
     tagline = "a systems engineering blog"
-# kiera theme options
