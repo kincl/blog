@@ -177,7 +177,7 @@ I went back to the configuration for anaconda in `/etc/anaconda/product.d`. It w
 to me which profile was being selected but I also saw the profiles were setting `file_system_type =
 xfs`.
 
-We don't have xfs in /proc/filesystems on the cloud builder but we do on local docker.
+We don't have xfs in `/proc/filesystems` on the cloud builder but we do on local docker.
 
 Finally just did a strace without filtering the syscalls and found this write call. Not sure why
 this traceback wasn't making it all the way back to logs but it was definitely the culprit. I have
@@ -213,6 +213,8 @@ ValueError: new value tmpfs is not valid as a default fs type
 
 After I changed the configuration `file_system_type = ext4` I was able to complete my build with Cloud
 Build. Woo hoo!
+
+## Conclusion
 
 Overall Cloud Build is super easy to use and efficient for my use case. I wanted something that I
 could kick off and just let run without having to keep my laptop open and awake. At ~40 min for a
