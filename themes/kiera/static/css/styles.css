@@ -212,7 +212,7 @@ time {
 
 a {
   color: #666666;
-  text-decoration: none;
+  /* text-decoration: none; */
 }
 
 .image, figure img, img {

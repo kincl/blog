@@ -1,7 +1,7 @@
 baseURL = "https://kincl.dev/"
 languageCode = "en-us"
 copyright = "Copyright &copy; 2021 - Jason Kincl"
-title = "Notes"
+title = "Jason Kincl"
 
 theme = "kiera"
 # kiera theme options
