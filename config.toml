@@ -1,7 +1,7 @@
-baseURL = "http://jasonkincl.com/"
+baseURL = "https://kincl.dev/"
 languageCode = "en-us"
 copyright = "Copyright &copy; 2021 - Jason Kincl"
-title = "Personal Blog"
+title = "Notes"
 
 theme = "kiera"
 # kiera theme options
@@ -20,4 +20,4 @@ googleAnalytics = "" #Google Analytics ID
     instagram = ""
 
 [params]
-    tagline = "personal blog"
+    tagline = "my personal blog"
