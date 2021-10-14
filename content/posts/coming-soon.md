@@ -1,9 +1,7 @@
 ---
-title: "Coming Soon"
+title: "Testing"
 date: 2018-12-08T09:16:15-05:00
-draft: true
-menu: "main"
-meta: "false"
+draft: false
 ---
 
-I should have more content here...
+Is this thing on?
