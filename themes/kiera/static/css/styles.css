@@ -2,18 +2,8 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  font-family: "Roboto Slab", serif;
+  font-family: 'Roboto Mono', monospace;
   color: #333333;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-time {
-  font-family: "Ruda", sans-serif;
 }
 
 #container {
@@ -73,7 +63,6 @@ time {
 #container nav {
   border-bottom: solid 3px #cecece;
   padding-bottom: 0.5em;
-  font-family: "Ruda", sans-serif;
 }
 
 #container nav ul {
@@ -95,7 +84,7 @@ time {
 #container main {
   flex: 1 0 0;
   line-height: 1.5;
-  font-size: 1.2rem;
+  font-size: 15px;
 }
 
 #container main section#home ul {
@@ -184,6 +173,30 @@ time {
   margin-bottom: 1rem;
 }
 
+#container main h1:before {
+  content: "# ";
+}
+
+#container main h2:before {
+  content: "## ";
+}
+
+#container main h3:before {
+  content: "### ";
+}
+
+#container main h4:before {
+  content: "#### ";
+}
+
+#container main h5:before {
+  content: "##### ";
+}
+
+#container main h6:before {
+  content: "###### ";
+}
+
 #container footer {
   border-top: solid 1px #cecece;
 }
@@ -194,7 +207,6 @@ time {
 
 .meta-aside, #container main section#home ul li aside, #container main article aside {
   margin: 0.5em 0;
-  font-family: "Ruda", sans-serif;
   color: #909090;
   font-size: 0.8em;
 }
@@ -343,7 +355,6 @@ blockquote {
 blockquote::before {
   content: "\f10d";
   font-size: 3em;
-  font-family: "FontAwesome";
   color: rgba(192, 192, 192, 0.3);
   position: absolute;
   left: 6px;
