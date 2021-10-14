@@ -10,7 +10,7 @@ contestants use on the day of the competition.
 
 <!--more-->
 
-The competition is spread out between sites in Louisiana, Texas, and Oaklahoma so all of the sites
+The competition is spread out between sites in Louisiana, Texas, and Oklahoma so all of the sites
 need to set up their own computer labs using our contest image.
 
 ## LiveCD-based Image
@@ -22,10 +22,10 @@ contest image for the weekend without modifying the OS on the system disk of the
 The LiveCD makes use of a SquashFS read-only layer and a read-write layer in RAM. SquashFS is
 perfect for reducing the overall size of the image which gets quite large since we ship a number of
 programming languages and IDEs in the desktop environment. In order to prevent data loss in the
-event of a kernel panic or power event, we have a partiton on the USB drive that is set aside for
+event of a kernel panic or power event, we have a partition on the USB drive that is set aside for
 `/home`.
 
-Switching to CentOS 8 let us to mount the root squashfs with a R/W layer in RAM using OverlayFS
+Switching to CentOS 8 let us to mount the root SquashFS with a R/W layer in RAM using OverlayFS
 instead of device mapper. Device mapper is not ideal because it uses a snapshot volume as the RW
 layer which can become full if too many blocks are written to the snapshot. The snapshot volume is
 also difficult to monitor but with OverlayFS we can monitor the R/W layer that is mounted from a
@@ -43,7 +43,7 @@ the site organizers to boot into our OS but since it was just a block copy we di
 partition for `/home`. However once booted into this live environment the user could run a shell
 script that would take a second USB drive and make it bootable with the correct partitions.
 
-We did this so that we did not have to maintain a disk formating script for all three major OSes
+We did this so that we did not have to maintain a disk formatting script for all three major OSes
 that the site administrators may want to use. By having them boot into our ISO we would only have to
 maintain a script for Linux and we could control and test the userspace tools ourselves easily.
 
@@ -67,7 +67,7 @@ Instead we needed it to look like:
 
 In order to achieve our simplified set of operations we moved from providing a ISO image to just
 providing a compressed disk image. One of the nice side effects of the Raspberry PI movement is that
-there are now an abundance of high quality tools that will take a disk iamge and copy it to
+there are now an abundance of high quality tools that will take a disk image and copy it to
 removable media such as [Balena Etcher](https://www.balena.io/etcher/).
 
 ## Building an Image
@@ -78,7 +78,7 @@ built the complete ISO image so we wanted to stick with that as our base.
 
 ### Step 1: Build the Image Tarball
 
-The `livemedia-creator` script orcestrates the Anaconda installer to bootstrap a system install from
+The `livemedia-creator` script orchestrates the Anaconda installer to bootstrap a system install from
 a kickstart file. By specifying `--make-tar` it just outputs a tarball we can use for the next step.
 
 ```bash
@@ -90,7 +90,7 @@ the RPMs) to get our base OS configured.
 
 ### Step 2: Make R/O SquashFS Volume
 
-We can then make our squashfs volume. For development we set ` -Xcompression-level 1`  because it
+We can then make our SquashFS volume. For development we set ` -Xcompression-level 1`  because it
 significantly speeds up the process but for the production image, omitting this argument does the
 default of highest compression level for gzip.
 
@@ -102,8 +102,8 @@ mksquashfs /work/tmproot /work/output/squashfs.img
 
 ### Step 3: Put It All Together
 
-The last step is to build the disk image, setting up the partitions, bootloader, and copying the
-necessary files including the squashfs volume to the boot partition.
+The last step is to build the disk image, setting up the partitions, boot loader, and copying the
+necessary files including the SquashFS volume to the boot partition.
 
 ```bash
 truncate -s 8G /work/output/boot.img
@@ -166,6 +166,6 @@ qemu-img convert -O vmdk /work/output/boot.img /work/output/images/boot.vmdk
 ## Conclusion
 
 Overall it has been a fun project to dig into the LiveCD process and build it all from scratch
-(relatively speaking, we are still `yum install kernel` after all). All of the squashfs/overlayfs
+(relatively speaking, we are still `yum install kernel` after all). All of the SquashFS/OverlayFS
 features are built right into stock Dracut modules which makes the whole process easy to build and
 maintain.
