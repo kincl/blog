@@ -1,6 +1,6 @@
 ---
 title: "RTL-SDR with BBQ"
-date: 2022-06-24T20:00:00-05:00
+date: 2022-06-24
 draft: true
 ---
 
@@ -8,7 +8,10 @@ When I first got started with BBQ smoking I needed some temperature probes that 
 
 <!--more-->
 
-![BGE temperature probe]()
+
+| ![BGE temperature probe](/images/bge-thermometer.jpg) |
+|:--:|
+| *Big Green Egg Dual-Probe Wireless Thermometer* |
 
 At first, the simple wireless thermometer was just fine for my smoking needs but as I have continued to hone those skills I started to think it would be nice to have a graph of the temperatures over time to see if I could notice trends faster. For example, just a point in time "temperature of cook chamber is 220" isn't as useful as "temperature was 225 and now it is 220" which signals to me that the temperature is dropping.
 
@@ -45,7 +48,9 @@ This was pretty exciting to find (and even with a debian package, of course!) be
 
 After booting the Pi and installing the prerequisites I started rtl_433 not knowing what I was going to get and...
 
-![screenshot of rtl_433 working]()
+| ![screenshot of rtl_433 working](/images/rtl_433-working.png) |
+|:--:|
+| *I had to go back and get a screenshot* |
 
 Success!
 

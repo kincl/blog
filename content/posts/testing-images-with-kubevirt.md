@@ -1,6 +1,6 @@
 ---
 title: "Testing Bootable LiveCD Images with KubeVirt"
-date: 2022-05-10T17:00:00-05:00
+date: 2022-05-10
 draft: true
 ---
 

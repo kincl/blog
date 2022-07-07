@@ -1,12 +1,12 @@
 ---
-title: "About"
-date: 2018-12-08T09:16:15-05:00
+title: "About Me"
+date: 2022-01-01
 draft: true
 menu: main
 meta: false
 ---
 
-Jason Kincl
+Not much here right now, just a list things I have done.
 
 # 2021
 

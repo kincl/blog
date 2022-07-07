@@ -1,6 +1,6 @@
 ---
 title: "SCUSA: Contest Disk Images"
-date: 2021-02-01T20:00:00-05:00
+date: 2021-02-01
 draft: false
 ---
 
