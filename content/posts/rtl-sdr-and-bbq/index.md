@@ -1,5 +1,5 @@
 ---
-title: "RTL-SDR with BBQ"
+title: "RTL-SDR and BBQ"
 date: 2022-06-24
 draft: true
 ---
@@ -8,10 +8,13 @@ When I first got started with BBQ smoking I needed some temperature probes that 
 
 <!--more-->
 
-
-| ![BGE temperature probe](/images/bge-thermometer.jpg) |
-|:--:|
-| *Big Green Egg Dual-Probe Wireless Thermometer* |
+{{< figure 
+src="bge-thermometer.jpg" 
+caption="Big Green Egg Dual-Probe Wireless Thermometer" 
+attr="Big Green Egg"
+class="float-image-right"
+attrlink="https://biggreenegg.com/product/temperature-gauge-dual-probe-wireless-thermometer/" 
+>}}
 
 At first, the simple wireless thermometer was just fine for my smoking needs but as I have continued to hone those skills I started to think it would be nice to have a graph of the temperatures over time to see if I could notice trends faster. For example, just a point in time "temperature of cook chamber is 220" isn't as useful as "temperature was 225 and now it is 220" which signals to me that the temperature is dropping.
 
@@ -21,9 +24,20 @@ As I started to look around, I found that there are a number of really awesome p
 
 With almost no radio hardware background, I thought that all I wanted to do would be to intercept the radio signal between the "base" with the temp probes attached and the "remote" which displays the temperatures. Once I could get the data then I could send the temperatures as a time series to a database like InfluxDB and graph it with Grafana.
 
-![simple diagram getting wireless signals]()
-
-This seemed pretty simple, right?
+In my head it looked something like this:
+```goat
+                                                           o
+            intercept  --->  DB  <---  frontend  <--+--- --|--
+                ^                                   |      |
+                |                                   |     / \
+                |                                   |     user
+                |                                   |
+                |                                   |
+transmitter  <--+-->  receiver  <-------------------+
+     |
+     |
+   bbq 🔥 🍖
+```
 
 As I started digging into how I could get the radio signals, I found that the BGE thermometer that I had was actually just a rebranded Maverick ET-733 which was fairly well known having been on the market for a while. I stumbled upon an excellent Hackaday project: [Reverse Engineering the Maverick ET-732](https://hackaday.io/project/4690-reverse-engineering-the-maverick-et-732/details) which helped me understand a lot about how deep this rabbit hole really goes. Highlights of the things I learned:
 
@@ -48,11 +62,11 @@ This was pretty exciting to find (and even with a debian package, of course!) be
 
 After booting the Pi and installing the prerequisites I started rtl_433 not knowing what I was going to get and...
 
-| ![screenshot of rtl_433 working](/images/rtl_433-working.png) |
-|:--:|
-| *I had to go back and get a screenshot* |
-
-Success!
+{{< figure 
+src="rtl_433-working.png" 
+caption="Success! Wait, what is an Acurite-Rain899?"
+class="mid-image" 
+>}}
 
 I was looking at getting the JSON output and piping that into a time series database and I saw that one of the output formats was influxdb which solved that problem as well.
 
@@ -62,6 +76,42 @@ I have a lot of experience running InfluxDB v1 and Telegraf which were some of t
 
 After installing InfluxDB and hooking up the output from rtl_sdr I briefly looked at deploying Grafana as well but I decided to check out another new feature of InfluxDB: integrated dashboards.
 
-## Sifting Through the Data
+## Building the Dashboard
+
+{{< figure 
+src="dashboard.jpg" 
+caption="InfluxDB Dashboard of Wireless Temperature Probe"
+>}}
 
 ## Finished Product
+
+Once everything was built out I put the entire setup upstairs and it works perfectly. The antennas and stand came with the rtl-sdr.com kit which just made this part easy.
+
+{{< figure
+src="sdr-antenna.jpg" 
+caption="Raspberry Pi and SDR"
+class="mid-image"
+>}}
+
+### Systemd
+
+For good measure I also set up everything with systemd so it would start capturing when the Pi turns on. I am always happily surprised at how easy it is to set up a service in linux these days.
+
+{{<highlight systemd>}}
+[Unit]
+Description=rtl_433 service
+After=network.target
+
+[Service]
+ExecStart=rtl_433 -M time:unix:usec:utc -F "influx://influxdb/api/v2/write?org=home&bucket=rtl_433,token=key"
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+{{</highlight>}}
+
+{{<highlight bash>}}
+$ vi /etc/systemd/system/rtl_433.service
+$ systemctl daemon-reload
+$ systemctl enable --now rtl_433
+{{</highlight>}}
