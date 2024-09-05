@@ -1,7 +1,7 @@
 ---
 title: "RTL-SDR and BBQ"
 date: 2022-06-24
-draft: true
+draft: false
 ---
 
 When I first got started with BBQ smoking I needed some temperature probes that morning so I raced down to the ACE hardware near my house and picked up a Big Green Egg Dual-Probe Wireless Thermometer. This project is my attempt to turn that simple thermometer output into a graph of temp over time.
@@ -47,10 +47,16 @@ As I started digging into how I could get the radio signals, I found that the BG
 1. **If probe is not attached, temperature will be -532C** Will need to somehow discard these erroneous readings
 
 ## RTL-SDR
+{{< figure 
+src="rtl-sdr-starter-kit.jpg" 
+caption="rtl-sdr.com starter kit"
+class="float-image-right" 
+link="https://www.rtl-sdr.com/buy-rtl-sdr-dvb-t-dongles/"
+target="blank"
+>}}
+
 
 I have been reading about software defined radio projects for a number of years and thought that this project would be a good candidate for me since I needed a receiver that could pull the temperatures from the 433mhz band. I looked around at all of the various people selling a sdr device with the RTL2832U chipset but not really having much experience in this area I decied to go with the rtl-sdr.com branded setup which came with some antennas and mounts.
-
-![rtl-sdr.com software defined radio starter kit]()
 
 Once I got my kit I needed a machine to plug it into so I could start capturing signal. I decided to use a RaspberryPi 4 Model B that I had lying around. As I was verifing that my rtl-sdr kit would work on a Pi 4 with Rasbian I came across a really cool project, rtl_433.
 
