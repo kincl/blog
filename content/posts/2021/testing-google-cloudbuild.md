@@ -8,7 +8,7 @@ For the SCUSA project, we need to ship bootable Linux desktop images to all of t
 can use to easily convert a public computer lab into a contest environment. We have varied what we
 have shipped over the years but the last few we have opted for a LiveCD-based environment since it
 is minimally impacting to an existing computer lab. Read more about 
-[SCUSA disk images]({{< ref "/posts/scusa-disk-image" >}}).
+[SCUSA disk images]({{< ref "/posts/2021/scusa-disk-image" >}}).
 
 <!--more-->
 

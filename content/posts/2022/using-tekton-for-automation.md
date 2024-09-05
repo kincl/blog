@@ -16,7 +16,7 @@ needs.
 
 In order to get a baseline for evaluating the solutions I settled on a fairly simple automation problem. I wanted to poll a RSS feed for RasberryPi's and alert if something changed and there were RPi4's available for purchase.
 
-(todo add graph of automation solution)
+<!-- (todo add graph of automation solution) -->
 
 This would test a few different features:
 
