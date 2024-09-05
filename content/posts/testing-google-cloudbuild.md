@@ -1,6 +1,6 @@
 ---
 title: "Using Google Cloud Build To Build Linux Desktop Disk Images"
-date: 2021-10-05T20:00:00-05:00
+date: 2021-10-05
 draft: false
 ---
 
