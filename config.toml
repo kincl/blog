@@ -1,6 +1,6 @@
 baseURL = "https://kincl.dev/"
 languageCode = "en-us"
-copyright = "&copy; 2022 - Jason Kincl"
+copyright = "&copy; 2024 - Jason Kincl"
 title = "Jason Kincl"
 
 theme = "kiera"
